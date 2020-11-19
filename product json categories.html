@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .cakeImage {
+            width: 70%;
+            padding: 1.5rem;
+            border: solid lightgray medium;
+            display: block;
+            margin: auto;
+        }
+
+        .divImage {
+            text-align: center;
+            /* border: solid goldenrod medium; */
+            margin: 0.5rem 0rem;
+        }
+
+        .v-menu {
+            border: gray solid medium;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CoOkies Bakery</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="products.html">Product</a></li>
+                            <li><a href="product json.html">Product json</a></li>
+                            <li><a href="product json search.html">Product json search</a></li>
+                            <li><a href="product json categories.html">Product jason category</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left" id="formSearch">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" id="search" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+
+        <div class="page-header">
+            <h1 style="padding-top: 2rem;">Products </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 v-menu">
+                <h3>Categories</h3>
+                <hr>
+
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="cake" id="chk-cake" class="ck-cat" name="cat">
+                        Cake
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="chocolate" id="chk-chocolate" class="ck-cat" name="cat">
+                        Chocolate
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="col-md-10">
+                <div class="row" id="products">
+
+                    <div class="col-sm-6 col-md-4 divImage">
+                        <img src="image/cake/almond croissant.PNG" alt="" class="cakeImage">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="panel-footer" style="text-align: center;">
+            Copyright &copy; by ABC Team - November, 2020
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var data = [];
+            $.getJSON("js/data.json", function (items) {
+                // console.log(items);
+                data = items;
+
+                displayImages(data);
+
+            });
+
+
+            //lap trinh su kien search
+            $("#formSearch").submit(function (e) {
+                e.preventDefault();
+
+                let search = $("#search").val();
+                let re = new RegExp(search, "ig");
+                let subdata = data.filter(item => item.name.search(re) >= 0);
+
+                displayImages(subdata);
+
+            })
+
+
+            //lap trinh su kien click chon loai san pham
+            $("input[type=checkbox]").click(function () {
+
+                var cats =
+                    $('input:checkbox[name="cat"]:checked')
+                        .map(function () {
+                            return $(this).val();
+                        }).get();
+
+                cats = cats.toString().trim();
+
+                let subdata = (cats.length==0)?data: data.filter(item => cats.search(item.cat) >= 0);
+                
+                displayImages(subdata);
+
+            }
+            );
+        });
+
+        function displayImages(items) {
+            let s = ``;
+
+            $.each(items, function (k, v) {
+
+                s += `<div class="col-sm-6 col-md-4 divImage">
+                        <img src="image/cake/${v.pic}" alt="" class="cakeImage">
+                        <p>
+                            name: ${v.name} <br>
+                            price: ${v.price}
+                        </p> 
+                    </div> `;
+
+            });
+
+            $("#products").html(s);
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .cakeImage {
+            width: 80%;
+            padding: 1.5rem;
+            border: solid lightgray medium;
+            display: block;
+            margin: auto;
+        }
+
+        .divImage {
+            text-align: center;
+            /* border: solid goldenrod medium; */
+            margin: 0.5rem 0rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- khoi menu -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CoOkies Bakery</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="products.html">Product</a></li>
+                            <li><a href="product json.html">Product json</a></li>
+                            <li><a href="product json search.html">Product json search</a></li>
+                            <li><a href="product json categories.html">Product jason category</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- <form class="navbar-form navbar-left" id="formSearch">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" id="search" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form> -->
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+        <!-- ket thuc khoi menu -->
+
+
+
+        <div class="page-header">
+            <h1 style="padding-top: 2rem;">Products </h1>
+        </div>
+
+        <!-- khoi hien thi tat ca san pham  -->
+        <div class="row" id="products">
+
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/almond croissant.PNG" alt="" class="cakeImage">
+                <p>
+                    name: almond croissant <br>
+                    price: 100
+                </p>
+
+            </div>
+
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/caramen mousse.PNG" alt="" class="cakeImage">
+                <p>
+                    name: caramen mousse <br>
+                    price: 150
+                </p>
+            </div>
+
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/muffin raisin.PNG" alt="" class="cakeImage">
+                <p>
+                    name: muffin raisin <br>
+                    price: 123
+                </p>
+            </div>
+
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/opera.PNG" alt="" class="cakeImage">
+                <p>
+                    name: opera <br>
+                    price: 90
+                </p>
+
+            </div>
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/passion cheese.PNG" alt="" class="cakeImage">
+                <p>
+                    name: passion cheese <br>
+                    price: 115
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 divImage" data-id="abc">
+                <img src="image/cake/pate chaud.PNG" alt="" class="cakeImage">
+                <p>
+                    name: pate chaud <br>
+                    price: 13
+                </p>
+            </div>
+
+        </div>
+
+        <div class="panel-footer" style="text-align: center;">
+            Copyright &copy; by ABC Team - November, 2020
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="imgs-zoom-area"><img id="zoom_03" src="image/cake/almond croissant.PNG"
+                                        style="width: 100%;" alt=""></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="text-black-1">Product Name </h3>
+                                <h6 class="brand-name-2">Product Price</h6>
+                                <h6 class="brand-name-3">Product Cat </h6>
+                                <div role="tabpanel" class="tab-pane active" id="description">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majo Rity
+                                        have be suffered alteration in some form, by injected humou or randomis Rity
+                                        have be suffered alteration in some form, by injected humou or randomis words
+                                        which donot look even slightly believable. If you are going to use a passage
+                                        Lorem Ipsum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".divImage").click(function () {
+                $('#myModal').modal('show');
+            })
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>demo matchAll()</h2>
+        <hr>
+        <div class="row">            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Input text</label>
+                    <textarea name="note" id="note" cols="30" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">search text</label>
+                    <input type="text" name="search" id="search" class="form-control" value="">
+                </div>
+                <div>
+                    <input type="button" value="Result" id="btResult" class="btn btn-warning">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="">Matching texts</label>
+                    <textarea name="matches" id="matches" cols="30" rows="5" class="form-control"></textarea>
+                </div>               
+            </div>
+
+        </div>
+<script>
+$("#btResult").click(function(){
+
+    let note = $("#note").val();
+    let search = $("#search").val();
+    let re = new RegExp(search, 'ig');
+
+    let kq = note.matchAll(re); //str.matchAll(regexp);
+    for (const m of kq) {
+        $("#matches").append(`${m[0]}\n`)
+    }
+
+});
+
+</script>        
+        
+
+    </div>
+</body>
+</html>
