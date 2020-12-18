@@ -28,6 +28,10 @@
             border: gray solid medium;
             padding: 1rem;
         }
+
+        .navbar-inverse {
+            background-color: darkred;
+        }
     </style>
 </head>
 
@@ -102,7 +106,7 @@
 
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="chocolate" id="chk-chocolate" class="ck-cat" name="cat">
+                        <input type="checkbox" value="chocolate" id="chk-cake" class="c" name="cat">
                         Chocolate
                     </label>
                 </div>
@@ -155,14 +159,16 @@
             //lap trinh su kien click chon loai san pham
             $("input[type=checkbox]").click(function () {
 
-                var cats =
-                    $('input:checkbox[name="cat"]:checked')
-                        .map(function () {
-                            return $(this).val();
-                        }).get();
+                // var cats =
+                //     $('input:checkbox[name="cat"]:checked')
+                //         .map(function () {
+                //             return $(this).val();
+                //         }).get();
 
-                cats = cats.toString().trim();
+                // cats = cats.toString().trim();
 
+                let cats = $("#chk-cake:checked").map(function () { return $(this).val() }).toArray().toString();
+             
                 let subdata = (cats.length==0)?data: data.filter(item => cats.search(item.cat) >= 0);
                 
                 displayImages(subdata);
